@@ -10,10 +10,9 @@ import pdb
 import subprocess
 
 def _Config_proxy_():
-  socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 1080)
+  socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 1084)
   socket.socket = socks.socksocket
 #print urllib2.urlopen('http://www.sexinsex.net').read()
-_Config_proxy_()
 
 def _Check_Speed_():
   speed=[]
@@ -87,9 +86,12 @@ def foo():
     str_li.append("-m")
     str_li.append(_config_li["encry"])
     str_li.append("-l")
-    str_li.append("1083")
+    str_li.append("1084")
 #    print str_li
     child=subprocess.Popen(str_li)
+    if nex == 0:
+      os.system("sleep 3")
+      _Config_proxy_()
     temp_speed = _Check_Speed_()
     print("IP:%s 's speed %d \n"%(_config_li["ip"],temp_speed))
     child.kill()
