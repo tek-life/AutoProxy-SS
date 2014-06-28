@@ -14,18 +14,27 @@ def _Config_proxy_():
   socket.socket = socks.socksocket
 
 def _Check_Speed_():
+  os.system("sleep 2")
+  _Config_proxy_()
   speed=[]
   for i in range(3):
-    start = datetime.datetime.now()
-    content = urllib2.urlopen('https://www.google.com').read()
-#    print type(content)
+    try:
+      start = datetime.datetime.now()
+      content = urllib2.urlopen('https://www.google.com',None,3).read()
+    except urllib2.URLError:
+      pass 
+    except socks.ProxyConnectionError:
+      pass
+    else:
 #    print len(content)
-    end = datetime.datetime.now()
-    delta = (end-start).seconds*1000.0+(end-start).microseconds
-    _speed = len(content)*1000.0/delta
-    if _speed < 100:
-      print("%d -- %d" %(delta,_speed))
-      speed.append(_speed)
+      end = datetime.datetime.now()
+      delta = (end-start).seconds*1000.0+(end-start).microseconds
+      _speed = len(content)*1000.0/delta
+      if _speed < 100:
+        print("%d -- %d" %(delta,_speed))
+        speed.append(_speed)
+  if speed==[]:
+     return 0
   return sum(speed)/len(speed)
 
 #print _Check_Speed_()
@@ -88,9 +97,7 @@ def foo():
     str_li.append("1084")
 #    print str_li
     child=subprocess.Popen(str_li)
-    if nex == 0:
-      os.system("sleep 3")
-      _Config_proxy_()
+#    if nex == 0:
     temp_speed = _Check_Speed_()
     print("IP:%s 's speed %d \n"%(_config_li["ip"],temp_speed))
     child.kill()
