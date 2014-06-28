@@ -12,7 +12,6 @@ import subprocess
 def _Config_proxy_():
   socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 1084)
   socket.socket = socks.socksocket
-#print urllib2.urlopen('http://www.sexinsex.net').read()
 
 def _Check_Speed_():
   speed=[]
