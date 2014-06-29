@@ -67,7 +67,7 @@ def Connect():
 
 def _Check_Content():
   for fo in content:
-    print fo
+    print(fo)
 
 def foo():
 #  _Check_Content()
