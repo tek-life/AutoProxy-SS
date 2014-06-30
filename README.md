@@ -1,9 +1,11 @@
 AutoProxy-SS
 ============
 
-It is to find the fastest proxy server with ShadowSocks.
+It is to find the fastest proxy server with ShadowSocks. Currently it could work on Linux with Python 2.7.
 
-This tool will scan free shadowsocks ID from www.shadowsocks.net/get. You can 
+It is based on shadowsocks. So the shadowsocks must be installed.
+
+It will scan free shadowsocks ID from www.shadowsocks.net/get. You can 
 also add the ID to id.ini.
 
 Usage
