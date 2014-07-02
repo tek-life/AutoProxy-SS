@@ -24,7 +24,7 @@ Speed_check_number=3
 #qrPath is the QR image's URL
 #Will return the qrpath from qr
 def _Decodeqr(qrPath):
-    print qrPath
+    print(qrPath)
     try:
       content = urllib2.urlopen(qrPath,None,3).read()
     except (ssl.SSLError,urllib2.URLError, socks.ProxyConnectionError):
@@ -227,8 +227,21 @@ def foo():
     iter_i+=5
     temp=temp[5: ]
     nex += 1
+  Fnull = open("/dev/null","w")
   print("WIN: %s -- %d\n"%("".join(max_config),max_speed))
-  child=subprocess.Popen(max_config)
+  child=subprocess.Popen(max_config,stdout=Fnull)
+
+def Check_sslocal():
+  for path in os.environ['PATH'].split(':'):
+    if os.path.isdir(path) and 'sslocal' in os.listdir(path):
+      sslocal_flag=True
+      break
+  if not sslocal_flag:
+    print("Install shadowsocks first!")
+    exit(1)
+
+
 
 if __name__ == '__main__':
+  Check_sslocal()
   foo()
