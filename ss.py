@@ -19,6 +19,7 @@ special_corresp=['encry','password','ip','port']
 str_li=[]
 local_port=1080
 Speed_check_number=3
+sslocal_flag=False
 
 
 #qrPath is the QR image's URL
@@ -232,6 +233,7 @@ def foo():
   child=subprocess.Popen(max_config,stdout=Fnull)
 
 def Check_sslocal():
+  global sslocal_flag
   for path in os.environ['PATH'].split(':'):
     if os.path.isdir(path) and 'sslocal' in os.listdir(path):
       sslocal_flag=True
