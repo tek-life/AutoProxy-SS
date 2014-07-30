@@ -10,5 +10,8 @@ also add the ID to id.ini.
 
 Usage
 ============
-1. Go to this project
-2. $python ss.py
+1. Install dependency package
+	*. $sudo apt-get install python-pip python-m2crypto python-dev libzbar-dev
+	*. $sudo pip install zbar qrcode shadowsocks socksproxy
+2. Go to this project
+	*. $python ss.py
